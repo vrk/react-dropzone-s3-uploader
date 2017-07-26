@@ -147,9 +147,11 @@ export default class DropzoneS3Uploader extends React.Component {
   renderError = ({error}) => (error ? (<div className="rdsu-error small">{error}</div>) : null)
 
   onClick = (event) => {
+    event.stopPropagation();
     if (this.state.uploadedFiles.length > 0) {
-      event.stopPropagation();
       this.setState({uploadedFiles: [], error: null, progress: null});
+    } else {
+      this._dropzone.open();
     }
   }
 
@@ -200,7 +202,7 @@ export default class DropzoneS3Uploader extends React.Component {
     }
 
     return (
-      <Dropzone ref={c => this._dropzone = c} onDrop={this.handleDrop} onClick={this.onClick} {...dropzoneProps}>
+      <Dropzone ref={c => this._dropzone = c} onDrop={this.handleDrop} disableClick	onClick={this.onClick} {...dropzoneProps}>
         {content}
       </Dropzone>
     )
