@@ -146,16 +146,14 @@ export default class DropzoneS3Uploader extends React.Component {
 
   renderError = ({error}) => (error ? (<div className="rdsu-error small">{error}</div>) : null)
 
-  onClick = () => {
-    console.log('clicked');
+  onClick = (event) => {
     if (this.state.uploadedFiles.length > 0) {
+      event.stopPropagation();
       this.setState({uploadedFiles: [], error: null, progress: null});
     }
   }
 
   render() {
-    console.log('VICTORIAS UPLOADER');
-
     const {
       s3Url,
       passChildrenProps,
