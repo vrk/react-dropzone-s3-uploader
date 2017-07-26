@@ -154,6 +154,7 @@ export default class DropzoneS3Uploader extends React.Component {
       console.log(this._dropzone);
       this._dropzone.open();
     }
+    return true;
   }
 
   render() {
