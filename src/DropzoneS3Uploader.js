@@ -151,6 +151,7 @@ export default class DropzoneS3Uploader extends React.Component {
     if (this.state.uploadedFiles.length > 0) {
       this.setState({uploadedFiles: [], error: null, progress: null});
     } else {
+      console.log(this._dropzone);
       this._dropzone.open();
     }
   }
@@ -202,7 +203,7 @@ export default class DropzoneS3Uploader extends React.Component {
     }
 
     return (
-      <Dropzone ref={c => this._dropzone = c} onDrop={this.handleDrop} disableClick	onClick={this.onClick} {...dropzoneProps}>
+      <Dropzone ref={c => this._dropzone = c} onDrop={this.handleDrop} onClick={this.onClick} {...dropzoneProps}>
         {content}
       </Dropzone>
     )
