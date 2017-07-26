@@ -147,15 +147,14 @@ export default class DropzoneS3Uploader extends React.Component {
   renderError = ({error}) => (error ? (<div className="rdsu-error small">{error}</div>) : null)
 
   onClick = (event) => {
-    console.log('clicked!!');
-    event.stopPropagation();
     if (this.state.uploadedFiles.length > 0) {
-      this.setState({uploadedFiles: [], error: null, progress: null});
+      const isYes = confirm('Do you want to remove this photo?');
+      if (isYes) {
+        this.setState({uploadedFiles: [], error: null, progress: null});
+      }
     } else {
-      console.log(this._dropzone);
       this._dropzone.open();
     }
-    return true;
   }
 
   render() {
